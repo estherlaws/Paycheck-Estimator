@@ -1,6 +1,6 @@
 payrate = 16
 hoursWorked = float(input("How many hours did you work this pay period? "))
-taxRate = 0.16
+taxRate = 0.18
 fidelityContribution = 0.04
 
 totalEarnings = payrate * hoursWorked
@@ -25,7 +25,7 @@ if question == "Y" or question == "y":
 question = input("Did you work as a cashier? (Y/N?) ")
 if question == "Y" or question == "y":
     position = 12.25
-    hoursOtherPosition = float(input("How many hours did you work as a bartender? "))
+    hoursOtherPosition = float(input("How many hours did you work as a cashier? "))
 
     totalEarnings += position * hoursOtherPosition
     taxAmount = totalEarnings * taxRate
