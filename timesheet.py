@@ -4,7 +4,7 @@ taxRate = 0.18
 fidelityContribution = 0.04
 
 # Server Hours
-hoursWorked = float(input("How many hours as a banquet server did you work this pay period? "))
+hoursWorked = float(input("How many hours did you work as a banquet server? " ))
 
 totalEarnings = payrate * hoursWorked
 taxAmount = totalEarnings * taxRate
@@ -49,11 +49,28 @@ if question == "Y" or question == "y":
     netPay = totalEarnings - taxAmount - retirementPlan
     totalHours = hoursWorked + hoursOtherPosition
 
+# Initialize overtime variables
+otq = 0
+overTime = 0
+
+# Ask if user worked overtime
+question = input("Did you hit overtime? (Y/N?) ")
+if question == "Y" or question == "y":
+    otq = float(input("How many hours of overtime did you work? "))
+    overTime = otq * payrate * 1.5
+    totalEarnings += overTime
+    taxAmount = totalEarnings * taxRate
+    retirementPlan = totalEarnings * fidelityContribution
+    netPay = totalEarnings - taxAmount - retirementPlan
+
 # Decides whether total hours is to be printed in integer or decimal form
 if totalHours.is_integer():
     print(f"You worked a total of {int(totalHours)} hours!")
 else:
     print(f"You worked a total of {totalHours} hours!")
+
+# Prints Overtime Hours
+print(f"You worked a total of {int(otq)} hours of overtime!")
 
 # Tips Logic
 if tips > 0:
@@ -68,11 +85,17 @@ else:
 print(f"Tax Contribution: ${taxAmount:.2f}")
 print(f"401k Contribution: ${retirementPlan:.2f}")
 
+# Overtime Earnings
+if overTime.is_integer():
+    print(f"Overtime Earnings: ${int(overTime)}")
+else:
+    print(f"Overtime Earnings: ${overTime:.2f}")
+
 # Decides whether gross income is to be printed in integer or decimal form
 if totalEarnings.is_integer():
     print(f"Gross Income: ${int(totalEarnings)}")
 else:
     print(f"Gross Income: ${totalEarnings:.2f}")
-    
+
 print(f"Net Pay: ${netPay:.2f}")
 print("Woo hoo!!! Congrats on surviving another two weeks in hell!")
