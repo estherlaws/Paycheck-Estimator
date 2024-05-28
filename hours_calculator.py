@@ -11,5 +11,10 @@ def sum_floats():
             print("Invalid input! Enter a number or 'x to exit.")
     return total
 
+
 result = sum_floats()
-print("Total hours is: ", result)
+
+if result.is_integer():
+    print("Total hours is:", int(result))
+else:
+    print("Total hours is:", result)
